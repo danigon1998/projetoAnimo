@@ -1,7 +1,7 @@
 import {db, app} from "../config/firebaseConfig"
-import { setDoc, doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore"
+import { setDoc, doc, getDoc, serverTimestamp, updateDoc, arrayUnion } from "firebase/firestore"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
-import { IUser } from "../interfaces/IUser";
+import { IUser, IMoodEntry } from "../interfaces/IUser";
 
 export const auth = getAuth(app);
 
@@ -37,4 +37,14 @@ export async function fetchUserData(uid: string): Promise<IUser | null> {
 export async function updateLastLogin(uid: string): Promise<void> {
     const userDocRef = doc(db, "users", uid);
     await updateDoc(userDocRef, { lastLogin: serverTimestamp() });
+}
+
+export async function updateEmotion(uid: string, newMoodEntry: IMoodEntry): Promise<void> {
+    const userDocRef = doc(db, "users", uid);
+    try {
+        await updateDoc(userDocRef, {moodHistory: arrayUnion(newMoodEntry)});
+        console.log("Mood entry added successfully");
+    } catch (error) {
+        console.error("Error adding mood entry:", error);
+    }
 }

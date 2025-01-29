@@ -15,6 +15,7 @@ export interface IUser {
 export interface IMoodEntry {
     mood: string; 
     date: Date;   
+    timeOfDay: string;
     note?: string; 
 }
 

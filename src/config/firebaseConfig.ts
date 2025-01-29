@@ -1,16 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
+  apiKey: "AIzaSyDZGhRhw0Rmcej634ADX2pBmhy36C3rqCg",
+  authDomain: "devcurso-23d37.firebaseapp.com",
+  projectId: "devcurso-23d37",
+  storageBucket: "devcurso-23d37.firebaseapp.com",
+  messagingSenderId: "176982448698",
+  appId: "1:176982448698:web:43569469476198fab13303",
 };
 
 // Initialize Firebase

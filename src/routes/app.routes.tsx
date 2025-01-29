@@ -4,6 +4,7 @@ import { View } from "react-native";
 import { DrawerItem } from "@react-navigation/drawer";
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
+import History from "../pages/History";
 import { AuthContext } from "../contexts/auth";
 
 const Drawer = createDrawerNavigator();
@@ -23,6 +24,10 @@ export default function AppRoutes() {
                         label="Profile" 
                         onPress={() => props.navigation.navigate("Profile")} 
                     />
+                    <DrawerItem
+                        label="History"
+                        onPress={() => props.navigation.navigate("History")}
+                    />
                     <DrawerItem 
                         label="Sair do App" 
                         onPress={() => SignOut()} 
@@ -32,6 +37,7 @@ export default function AppRoutes() {
         >
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Profile" component={Profile} />
+            <Drawer.Screen name="History" component={History} />
         </Drawer.Navigator>
     );
 }
